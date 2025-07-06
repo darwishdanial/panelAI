@@ -7,7 +7,7 @@ import pandas as pd
 app = FastAPI()
 
 # Load the trained model
-model = joblib.load('panel_model_result_new_category.joblib')
+model = joblib.load('panel_model.joblib')
 
 # Define the expected input format
 class ProjectInput(BaseModel):
@@ -20,8 +20,8 @@ def predict_panel(input: ProjectInput):
     # X_input = np.array([[input.project_area, input.project_type]])
 
     X_input = pd.DataFrame([{
-        "project_area": input.project_area,
-        "project_type": input.project_type
+        "type_encoded": input.project_type,
+        "area_encoded": input.project_area
     }])
     
     # Get prediction probabilities
