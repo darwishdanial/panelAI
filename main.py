@@ -30,3 +30,4 @@ def predict_panel(input: ProjectInput):
     # Return as dictionary
     result = {str(class_id): round(prob, 4) for class_id, prob in zip(class_indices, probabilities)}
     return {"predictions": result}
+##test
